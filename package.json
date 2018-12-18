@@ -1,0 +1,77 @@
+{
+  "name": "lzwFlossRedux",
+  "author": "Austin K Smith",
+  "description": "100% Vanilla Javascript Multithreaded LZW Compression Library",
+  "homepage": "https://github.com/austinksmith/lzwFlossRedux.js",
+  "version": "1.0.0",
+  "main": "build/lzwFlossRedux.js",
+  "scripts": {
+    "build": "rm -rf ./build && webpack --config ./lzwFlossRedux.webpack.config.js",
+    "copy-common": "mkdir ./build/common && cp -a ./src/core/common/. ./build/common/",
+    "test": "karma start --reporters html"
+  },
+  "license": "Artistic-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/austinksmith/lzwFlossRedux.js"
+  },
+  "keywords": [
+    "multithreading",
+    "concurrency",
+    "performance",
+    "parallelism",
+    "compute",
+    "workers",
+    "threads",
+    "threading",
+    "workers",
+    "clooney",
+    "throughput",
+    "optimization",
+    "fast",
+    "latency",
+    "faster",
+    "vanilla",
+    "hamsters",
+    "asm",
+    "asmjs",
+    "es6",
+    "node",
+    "reactnative",
+    "mpi",
+    "web workers",
+    "parallel",
+    "task runner",
+    "thread pool",
+    "hamsters",
+    "parallel js",
+    "parallel es"
+  ],
+  "bugs": {
+    "url": "https://github.com/austinksmith/lzwFlossRedux.js/issues"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^6.4.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "jasmine-core": "^2.5.2",
+    "karma": "^3.0.5",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-htmlfile-reporter": "^0.3",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "karma-webpack": "^2.0.6",
+    "webpack": "^1.13.2"
+  },
+  "dependencies": {},
+  "directories": {
+    "test": "tests"
+  },
+  "collective": {
+
+  }
+}
