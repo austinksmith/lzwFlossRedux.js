@@ -29,8 +29,10 @@ class lzwFlossReduxjs {
   * @param {string} inputString
   * @param {function} onSuccess
   */
-  lzwEncode(inputString, onSuccess) {
-    run(inputString, encodeString, onSuccess);
+  lzwEncode(inputString) {
+    return new Promise((resolve, reject) => {
+      return this.run(inputString, this.encode, resolve, reject, false);
+    });
   }
 
   /**
@@ -39,8 +41,10 @@ class lzwFlossReduxjs {
   * @param {string} inputString
   * @param {function} onSuccess
   */
-  lzwDecode(inputString, onSuccess) {
-    run(inputString, decodeString, onSuccess, true);
+  lzwDecode(inputString) {
+    return new Promise((resolve, reject) => {
+      return this.run(inputString, this.decode, resolve, reject, true);
+    });
   }
 
   /**
@@ -50,43 +54,32 @@ class lzwFlossReduxjs {
   * @param {function} encodeOrDecode
   * @param {function} onSuccess
   */
-  run(inputString, fn, onSuccess, decode) {
-    var _inputString = decode
-      ? inputString
-      : unescape(encodeURIComponent(inputString));
-
-    splitString(_inputString, function(stringArray) {
-      var params = {
-        array: stringArray
-      };
-      hamsters.run(params, fn, function(output) {
-        var _output = decode
-          ? decodeURIComponent(escape(output))
-          : output;
-
-        onSuccess(_output);
-      }, 1, true);
-    });
+  run(inputString, fn, onSuccess, onError, decode) {
+    var _inputString = decode ? inputString : unescape(encodeURIComponent(inputString));
+    var stringArray = this.splitString(inputString);
+    var params = {
+      array: stringArray
+    }
+    hamsters.promise(params, fn).then((output) => {
+      var _output = decode ? decodeURIComponent(escape(output)) : output;
+      onSuccess(_output);
+    }).catch(error) => {
+      onError(error);
+    };
   }
 
   /**
-  * @description: Splits a string into an array
+  * @description: Splits a string into a charcode array
   * @method splitString
   * @param {string} inputString
   */
-  splitString(inputString, onSuccess) {
+  splitString(inputString) {
     var inputArray = (inputString + "").split("");
     var outputArray = [];
-    var operator = function(i) {
-      return arguments[0].charCodeAt(0);
-    };
-    var options = {
-      operator: operator,
-      array: inputArray
-    };
-    hamsters.tools.loop(options, function(output) {
-      onSuccess(output);
-    });
+    for (var i = 0; i < inputArray.length; i++) {
+      outputArray.push(inputArray[i].charCodeAt(0));
+    }
+    return outputArray;
   }
 
   /**
