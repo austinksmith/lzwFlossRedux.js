@@ -33,6 +33,30 @@ You can find a view examples of the library in action using the links below.
 
 # How to use lzwFlossRedux.js
 
+  * Add lzwFlossRedux to your project
+
+  ### HTML
+
+  * Download a copy of the library and add it to your webserver public directory
+  * Add script tag to your html page
+
+  ```html
+	<!-- HTML4 and (x)HTML -->
+	<script type="text/javascript" src="path/to/lzwFlossRedux.web.min.js">
+
+	<!-- HTML5 -->
+	<script src="path/to/lzwFlossRedux.web.min.js"></script>
+  ```
+
+  ### Node
+
+  * Use npm install to add the project to your dependencies `npm install --save lzwFlossRedux`
+  * Require the npm module in your app.js file
+
+  ```js
+  	var lzwFlossRedux = require('lzwFlossRedux.js');
+  ```
+
 
 
 
