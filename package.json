@@ -67,7 +67,9 @@
     "karma-webpack": "^2.0.6",
     "webpack": "^1.13.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "hamsters.js": "^5.1.2"
+  },
   "directories": {
     "test": "tests"
   },
