@@ -19,8 +19,8 @@ class lzwFlossReduxjs {
   */
   constructor() {
     this.version = '1.0.0';
-    this.encodeString = this.lzwEncode;
-    this.decodeString = this.lzwDecode;
+    this.encode = this.lzwEncode;
+    this.decode = this.lzwDecode;
   }
 
   /**
@@ -31,7 +31,7 @@ class lzwFlossReduxjs {
   */
   lzwEncode(inputString) {
     return new Promise((resolve, reject) => {
-      return this.run(inputString, this.encodeString, resolve, reject, false);
+      this.run(inputString, this.encodeString, resolve, reject, false);
     });
   }
 
@@ -43,7 +43,7 @@ class lzwFlossReduxjs {
   */
   lzwDecode(inputString) {
     return new Promise((resolve, reject) => {
-      return this.run(inputString, this.decodeString, resolve, reject, true);
+      this.run(inputString, this.decodeString, resolve, reject, true);
     });
   }
 
@@ -61,7 +61,10 @@ class lzwFlossReduxjs {
       array: stringArray
     }
     hamsters.promise(params, fn).then((output) => {
-      var _output = decode ? decodeURIComponent(escape(output)) : output;
+      var _output = output.data[0];
+      if(decode === true) {
+        _output = decodeURIComponent(escape(_output));
+      }
       onSuccess(_output);
     }).catch((error) => {
       onError(error);
