@@ -45,7 +45,13 @@
     "thread pool",
     "hamsters",
     "parallel js",
-    "parallel es"
+    "parallel es",
+    "compression",
+    "lzw-compression",
+    "encode",
+    "decode",
+    "bandwidth",
+    "data"
   ],
   "bugs": {
     "url": "https://github.com/austinksmith/lzwFlossRedux.js/issues"
