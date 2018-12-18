@@ -21,6 +21,8 @@ lzwFlossRedux is a multithreaded javascript implementation using the Hamsters.js
   * Reduce bandwidth use and costs without interupting user experience
   * Compress data before saving to local storage & session storage increasing how much you can store
   * Non-blocking, all compression / decompression is done using a WebWorker thread
+  * Written specifically for use with Hamsters.js allowing you to compress and decompress many items concurrently
+  * Async compression & decompression using promises
 
 # Examples
 
