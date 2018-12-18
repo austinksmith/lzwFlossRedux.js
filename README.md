@@ -80,4 +80,4 @@ You can find a view examples of the library in action using the links below.
 
 # Support lzwFlossRedux.js
 
-Your support makes projects like this possible.
+Please consider becoming a subscriber so I can continue to develop innovative open source projects. [ASMITHDEV SUBSCRIBESTAR](https://www.subscribestar.com/asmithdev) Thank you, your support makes projects like this possible.
