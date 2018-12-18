@@ -71,7 +71,5 @@
   "directories": {
     "test": "tests"
   },
-  "collective": {
-
-  }
+  "collective": {}
 }

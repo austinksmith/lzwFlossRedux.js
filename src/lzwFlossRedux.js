@@ -18,9 +18,9 @@ class lzwFlossReduxjs {
   * @function constructor - Sets properties for this class
   */
   constructor() {
-    version: "1.0.0",
-    encode: lzwEncode,
-    decode: lzwDecode
+    this.version = '1.0.0';
+    this.encodeString = this.lzwEncode;
+    this.decodeString = this.lzwDecode;
   }
 
   /**
@@ -31,7 +31,7 @@ class lzwFlossReduxjs {
   */
   lzwEncode(inputString) {
     return new Promise((resolve, reject) => {
-      return this.run(inputString, this.encode, resolve, reject, false);
+      return this.run(inputString, this.encodeString, resolve, reject, false);
     });
   }
 
@@ -43,7 +43,7 @@ class lzwFlossReduxjs {
   */
   lzwDecode(inputString) {
     return new Promise((resolve, reject) => {
-      return this.run(inputString, this.decode, resolve, reject, true);
+      return this.run(inputString, this.decodeString, resolve, reject, true);
     });
   }
 
@@ -63,9 +63,9 @@ class lzwFlossReduxjs {
     hamsters.promise(params, fn).then((output) => {
       var _output = decode ? decodeURIComponent(escape(output)) : output;
       onSuccess(_output);
-    }).catch(error) => {
+    }).catch((error) => {
       onError(error);
-    };
+    });
   }
 
   /**
