@@ -1,51 +1,62 @@
-// /* jshint esversion: 6, curly: true, eqeqeq: true, forin: true */
+/* jshint esversion: 6, curly: true, eqeqeq: true, forin: true */
 
-// /***********************************************************************************
-// * Title: Hamsters.js                                                               *
-// * Description: 100% Vanilla Javascript Multithreading & Parallel Execution Library *
-// * Author: Austin K. Smith                                                          *
-// * Contact: austin@asmithdev.com                                                    *  
-// * Copyright: 2015 Austin K. Smith - austin@asmithdev.com                           * 
-// * License: Artistic License 2.0                                                    *
-// ***********************************************************************************/
+/***********************************************************************************
+* Title: lzwFlossRedux                                                             *
+* Description: 100% Vanilla Javascript Multithreaded LZW Compression Library       *
+* Author: Austin K. Smith                                                          *
+* Contact: austin@asmithdev.com                                                    *  
+* Copyright: 2015 Austin K. Smith - austin@asmithdev.com                           * 
+* License: Artistic License 2.0                                                    *
+***********************************************************************************/
 
-// import hamsters from '../src/hamsters';
+import lzwFlossRedux from '../src/lzwFlossRedux';
+import hamsters from '../node_modules/hamsters.js';
 
-// describe("Hamsters.js", () => {
+// Initialize Hamsters.js first
+hamsters.init();
 
-//   it("maxThreads should be detected and match logical thread count", () => {
-//     expect(hamsters.maxThreads).toEqual((navigator.hardwareConcurrency || 4));
-//   });
+// Let's validate our encoding works
+describe("lzwFlossRedux", () => {
 
-//   it("Init should initialize library and be removed", () => {
-//     hamsters.init();
-//     expect(typeof hamsters.init).toBe('undefined'); 
-//   });
-// });
+	it("Hamsters.js should be initialized", () => {
+  	expect(typeof hamsters.version).not.toBe('undefined');
+    expect(typeof hamsters.init).toBe("undefined");
+  });
 
-// describe("WebHamsters running asynchronously", () => {
-  
-//   beforeEach((done) => {
-//     done();
-//   });
+  it("Version should be defined", () => {
+  	expect(typeof lzwFlossRedux.version).not.toBe('undefined');
+    expect(typeof lzwFlossRedux.version).toBe("string");
+    expect(lzwFlossRedux.version).toEqual('1.0.0');
+  });
 
-//   var dataTypes = ['Int8','Int16','Int32','Float32','Float64','Uint16','Uint32','Uint8', null];
+  it("Encode should be a function", () => {
+    expect(typeof lzwFlossRedux.encode).not.toBe('undefined');
+    expect(typeof lzwFlossRedux.encode).toEqual('function');
+  });
 
-//   for (var i = dataTypes.length - 1; i >= 0; i--) {
-//     it("Calculates square root of 4000 ("+dataTypes[i]+")", function(done) {
-//       var params = {
-//         threads: 1,
-//         aggregate: true,
-//         dataType: dataTypes[i],
-//         num: 4000
-//       };
-//       hamsters.run(params, function() {
-//         rtn.data.push(Math.floor(Math.sqrt(params.num)));
-//       }, function(res) {
-//         console.log(res);
-//         expect(res.data[0]).toEqual(63);
-//         done();
-//       });
-//     });
-//   }
-// });
+  it("Decode should be a function", () => {
+    expect(typeof lzwFlossRedux.decode).not.toBe('undefined');
+    expect(typeof lzwFlossRedux.decode).toEqual('function');
+  });
+
+  it("Encode should encode sample string", () => {
+  	var stringToEncode = 'This is my string, there are many like it but this one is mine.';
+  	lzwFlossRedux.encode(stringToEncode).then(function(encodedString) {
+    	expect(typeof encodedString).not.toBe('undefined');
+    	expect(typeof encodedString).toEqual('string');
+    	expect(encodedString.length).toBeLessThan(stringToEncode.length);
+    	expect(encodedString).toEqual('This Ă my string, there aĕĆanĈlikĖit buģĒąonġămče.')
+  	});
+  });
+
+  it("Decode should decode sample string", () => {
+  	var stringToDecode = 'This Ă my string, there aĕĆanĈlikĖit buģĒąonġămče.';
+  	lzwFlossRedux.decode(stringToDecode).then(function(decodedString) {
+    	expect(typeof decodedString).not.toBe('undefined');
+    	expect(typeof decodedString).toEqual('string');
+    	expect(decodedString.length).toBeGreaterThan(stringToDecode.length);
+    	expect(decodedString).toEqual('This is my string, there are many like it but this one is mine.')
+  	});
+  });
+
+});
