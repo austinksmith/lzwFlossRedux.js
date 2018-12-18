@@ -1,4 +1,4 @@
-# Hamsters.js
+# lzwFlossRedux.js
 
 **Author**: Austin K. Smith
 

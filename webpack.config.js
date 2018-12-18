@@ -6,12 +6,12 @@ const web = {
   devtool: 'sourcemap',
   context: path.resolve(__dirname, 'src'),
   entry: [
-    './hamsters'
+    './lzwFlossRedux'
   ],
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'hamsters.web.min.js',
-    library: 'hamsters',
+    filename: 'lzwFlossRedux.web.min.js',
+    library: 'lzwFlossRedux',
     libraryTarget: 'var'
   },
   plugins: webpack.plugins,
@@ -34,12 +34,12 @@ const node = {
   devtool: 'sourcemap',
   context: path.resolve(__dirname, 'src'),
   entry: [
-    './hamsters'
+    './lzwFlossRedux'
   ],
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'hamsters.node.min.js',
-    library: 'hamsters',
+    filename: 'lzwFlossRedux.node.min.js',
+    library: 'lzwFlossRedux',
     libraryTarget: 'commonjs2'
   },
   plugins: webpack.plugins,
