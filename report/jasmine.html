@@ -10,13 +10,13 @@
     <section>
       <header class="overview">
         <div class="browser">Browser: PhantomJS 2.1.1 (Linux 0.0.0)</div>
-        <div class="timestamp">Timestamp: 12/18/2018, 10:04:35 AM</div>
+        <div class="timestamp">Timestamp: 12/18/2018, 10:15:12 AM</div>
         <p class="results">
-          6 tests / 
+          8 tests / 
           0 errors / 
           0 failures / 
           0 skipped / 
-          runtime: 0.005s
+          runtime: 0.008s
         </p>
       </header>
       <div class="spec spec--group">
@@ -55,6 +55,24 @@
             <p class="spec__suite hidden">lzwFlossRedux</p>
             <em class="spec__descrip">Decode should be a function</em>
           </div>
+          <div class="spec__status">Passed in 0.001s</div>
+        </h3>
+      </div>
+      <div class="spec spec--pass" style="margin-left:0px;">
+        <h3 class="spec__header">
+          <div class="spec__title">
+            <p class="spec__suite hidden">lzwFlossRedux</p>
+            <em class="spec__descrip">splitString should be a function</em>
+          </div>
+          <div class="spec__status">Passed in 0s</div>
+        </h3>
+      </div>
+      <div class="spec spec--pass" style="margin-left:0px;">
+        <h3 class="spec__header">
+          <div class="spec__title">
+            <p class="spec__suite hidden">lzwFlossRedux</p>
+            <em class="spec__descrip">splitString should return array of charcodes</em>
+          </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
       </div>
@@ -64,7 +82,7 @@
             <p class="spec__suite hidden">lzwFlossRedux</p>
             <em class="spec__descrip">Encode should encode sample string</em>
           </div>
-          <div class="spec__status">Passed in 0.001s</div>
+          <div class="spec__status">Passed in 0.002s</div>
         </h3>
       </div>
       <div class="spec spec--pass" style="margin-left:0px;">
@@ -73,10 +91,90 @@
             <p class="spec__suite hidden">lzwFlossRedux</p>
             <em class="spec__descrip">Decode should decode sample string</em>
           </div>
-          <div class="spec__status">Passed in 0s</div>
+          <div class="spec__status">Passed in 0.001s</div>
         </h3>
       </div>
-      <div class="system-out"><strong>System output:</strong><br />PhantomJS 2.1.1 (Linux 0.0.0) INFO: 'Hamsters.js v5.1.2 Info: Hamsters.js v5.1.2 initialized using up to 4 threads. @ 1545145475371'
+      <div class="system-out"><strong>System output:</strong><br />PhantomJS 2.1.1 (Linux 0.0.0) INFO: 'Hamsters.js v5.1.2 Info: Hamsters.js v5.1.2 initialized using up to 4 threads. @ 1545146112837'
+<br />PhantomJS 2.1.1 (Linux 0.0.0) ERROR: 'Unhandled promise rejection', ReferenceError: Can't find variable: hamsters
+run@http://localhost:9876/base/tests.webpack.js?9d8a543ba0beb7fda9fcf1b53c16375b225d9365:249:16
+http://localhost:9876/base/tests.webpack.js?9d8a543ba0beb7fda9fcf1b53c16375b225d9365:212:19
+Promise@http://localhost:9876/base/node_modules/babel-polyfill/dist/polyfill.js?a53df70d879dcf83b4f9965f1f6bd9d3006f895d:4400:15
+lzwEncode@http://localhost:9876/base/tests.webpack.js?9d8a543ba0beb7fda9fcf1b53c16375b225d9365:211:26
+http://localhost:9876/base/tests.webpack.js?9d8a543ba0beb7fda9fcf1b53c16375b225d9365:144:36
+attempt@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4478:50
+run@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4402:27
+execute@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4384:13
+queueRunnerFactory@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:964:42
+execute@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:563:28
+fn@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:5541:44
+attempt@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4486:30
+run@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4402:27
+runNext@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4446:23
+http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4453:20
+http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4356:17
+complete@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:570:19
+http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4416:22
+onmessage@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:1849:15
+<br />PhantomJS 2.1.1 (Linux 0.0.0) ERROR: 'Unhandled promise rejection', ReferenceError: Can't find variable: hamsters
+run@http://localhost:9876/base/tests.webpack.js?9d8a543ba0beb7fda9fcf1b53c16375b225d9365:249:16
+http://localhost:9876/base/tests.webpack.js?9d8a543ba0beb7fda9fcf1b53c16375b225d9365:212:19
+Promise@http://localhost:9876/base/node_modules/babel-polyfill/dist/polyfill.js?a53df70d879dcf83b4f9965f1f6bd9d3006f895d:4400:15
+lzwEncode@http://localhost:9876/base/tests.webpack.js?9d8a543ba0beb7fda9fcf1b53c16375b225d9365:211:26
+http://localhost:9876/base/tests.webpack.js?9d8a543ba0beb7fda9fcf1b53c16375b225d9365:144:36
+attempt@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4478:50
+run@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4402:27
+execute@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4384:13
+queueRunnerFactory@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:964:42
+execute@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:563:28
+fn@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:5541:44
+attempt@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4486:30
+run@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4402:27
+runNext@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4446:23
+http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4453:20
+http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4356:17
+complete@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:570:19
+http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4416:22
+onmessage@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:1849:15
+<br />PhantomJS 2.1.1 (Linux 0.0.0) ERROR: 'Unhandled promise rejection', ReferenceError: Can't find variable: hamsters
+run@http://localhost:9876/base/tests.webpack.js?9d8a543ba0beb7fda9fcf1b53c16375b225d9365:249:16
+http://localhost:9876/base/tests.webpack.js?9d8a543ba0beb7fda9fcf1b53c16375b225d9365:229:20
+Promise@http://localhost:9876/base/node_modules/babel-polyfill/dist/polyfill.js?a53df70d879dcf83b4f9965f1f6bd9d3006f895d:4400:15
+lzwDecode@http://localhost:9876/base/tests.webpack.js?9d8a543ba0beb7fda9fcf1b53c16375b225d9365:228:26
+http://localhost:9876/base/tests.webpack.js?9d8a543ba0beb7fda9fcf1b53c16375b225d9365:154:36
+attempt@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4478:50
+run@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4402:27
+execute@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4384:13
+queueRunnerFactory@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:964:42
+execute@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:563:28
+fn@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:5541:44
+attempt@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4486:30
+run@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4402:27
+runNext@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4446:23
+http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4453:20
+http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4356:17
+complete@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:570:19
+http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4416:22
+onmessage@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:1849:15
+<br />PhantomJS 2.1.1 (Linux 0.0.0) ERROR: 'Unhandled promise rejection', ReferenceError: Can't find variable: hamsters
+run@http://localhost:9876/base/tests.webpack.js?9d8a543ba0beb7fda9fcf1b53c16375b225d9365:249:16
+http://localhost:9876/base/tests.webpack.js?9d8a543ba0beb7fda9fcf1b53c16375b225d9365:229:20
+Promise@http://localhost:9876/base/node_modules/babel-polyfill/dist/polyfill.js?a53df70d879dcf83b4f9965f1f6bd9d3006f895d:4400:15
+lzwDecode@http://localhost:9876/base/tests.webpack.js?9d8a543ba0beb7fda9fcf1b53c16375b225d9365:228:26
+http://localhost:9876/base/tests.webpack.js?9d8a543ba0beb7fda9fcf1b53c16375b225d9365:154:36
+attempt@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4478:50
+run@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4402:27
+execute@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4384:13
+queueRunnerFactory@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:964:42
+execute@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:563:28
+fn@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:5541:44
+attempt@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4486:30
+run@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4402:27
+runNext@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4446:23
+http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4453:20
+http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4356:17
+complete@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:570:19
+http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:4416:22
+onmessage@http://localhost:9876/base/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?0b1eaf7a13cae32191eadea482cfc96ae41fc22b:1849:15
 </div>
     </section>
   </body>

@@ -39,6 +39,18 @@ describe("lzwFlossRedux", () => {
     expect(typeof lzwFlossRedux.decode).toEqual('function');
   });
 
+  it("splitString should be a function", () => {
+    expect(typeof lzwFlossRedux.decode).not.toBe('undefined');
+    expect(typeof lzwFlossRedux.decode).toEqual('function');
+  });
+
+  it("splitString should return array of charcodes", () => {
+  	var stringToSplit = 'This is my string, there are many like it but this one is mine.';
+  	var splitString = lzwFlossRedux.splitString(stringToSplit);
+  	expect(typeof splitString).not.toBe('undefined');
+  	expect(Array.isArray(splitString)).toBe(true);
+  });
+
   it("Encode should encode sample string", () => {
   	var stringToEncode = 'This is my string, there are many like it but this one is mine.';
   	lzwFlossRedux.encode(stringToEncode).then(function(encodedString) {
