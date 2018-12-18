@@ -56,7 +56,7 @@ class lzwFlossReduxjs {
   */
   run(inputString, fn, onSuccess, onError, decode) {
     var _inputString = decode ? inputString : unescape(encodeURIComponent(inputString));
-    var stringArray = this.splitString(inputString);
+    var stringArray = this.splitString(_inputString);
     var params = {
       array: stringArray
     }

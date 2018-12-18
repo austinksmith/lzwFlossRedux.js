@@ -14,7 +14,13 @@ const web = {
     library: 'lzwFlossRedux',
     libraryTarget: 'var'
   },
-  plugins: webpack.plugins,
+  plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin,
+    new webpack.optimize.UglifyJsPlugin({
+        include: /\.min\.js$/,
+        minimize: true
+    }),
+  ],
   module: {
     loaders: [
       {
@@ -42,7 +48,13 @@ const node = {
     library: 'lzwFlossRedux',
     libraryTarget: 'commonjs2'
   },
-  plugins: webpack.plugins,
+  plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin,
+    new webpack.optimize.UglifyJsPlugin({
+        include: /\.min\.js$/,
+        minimize: true
+    }),
+  ],
   module: {
     loaders: [
       {
