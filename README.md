@@ -4,7 +4,7 @@
 
 **Website**: [Github](https://github.com/austinksmith/lzwFlossRedux.js)
 
-**Description**: 100% Vanilla Javascript Multithreading & Parallel Execution Library
+**Description**: 100% Vanilla Javascript Multithreaded LZW Compression Library
 
 **License**: Artistic License 2.0
 
