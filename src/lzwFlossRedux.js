@@ -1,8 +1,8 @@
 /* jshint esversion: 6, curly: true, eqeqeq: true, forin: true */
 
 /***********************************************************************************
-* Title: Hamsters.js                                                               *
-* Description: 100% Vanilla Javascript Multithreading & Parallel Execution Library *
+* Title: lzwFlossRedux                                                             *
+* Description: 100% Vanilla Javascript Multithreaded LZW Compression Library       *
 * Author: Austin K. Smith                                                          *
 * Contact: austin@asmithdev.com                                                    *  
 * Copyright: 2015 Austin K. Smith - austin@asmithdev.com                           * 
@@ -11,142 +11,171 @@
 
 'use strict';
 
-import hamstersVersion from './core/version';
-import hamstersHabitat from './core/habitat';
-import hamstersPool from './core/pool';
-import hamstersData from './core/data';
-import hamstersLogger from './core/logger';
-import hamstersMemoizer from './core/memoizer';
-
-class hamstersjs {
+class lzwFlossReduxjs {
 
   /**
   * @constructor
   * @function constructor - Sets properties for this class
   */
   constructor() {
-    this.version = hamstersVersion;
-    this.maxThreads = hamstersHabitat.logicalThreads;
-    this.habitat = hamstersHabitat;
-    this.data = hamstersData;
-    this.pool = hamstersPool;
-    this.logger = hamstersLogger;
-    this.memoizer = hamstersMemoizer;
-    this.run = this.hamstersRun;
-    this.promise = this.hamstersPromise;
-    this.init = this.initializeLibrary;
+    version: "1.0.0",
+    encode: lzwEncode,
+    decode: lzwDecode
   }
 
   /**
-  * @function initializeLibrary - Prepares & initializes Hamsters.js library
-  * @param {object} startOptions - Provided library functionality options
+  * @description: Generates a thread and lzw encodes the supplied string
+  * @method encode
+  * @param {string} inputString
+  * @param {function} onSuccess
   */
-  initializeLibrary(startOptions) {
-    if (typeof startOptions !== 'undefined') {
-      this.processStartOptions(startOptions);
-    }
-    if(!this.habitat.legacy && this.habitat.persistence === true) {
-      hamstersPool.spawnHamsters(this.maxThreads);
-    }
-    this.logger.info(`Hamsters.js v${this.version} initialized using up to ${this.maxThreads} threads.`);
-    delete this.init;
+  lzwEncode(inputString, onSuccess) {
+    run(inputString, encodeString, onSuccess);
   }
 
   /**
-  * @function processStartOptions - Adjusts library functionality based on provided options
-  * @param {object} startOptions - Provided library functionality options
+  * @description: Generates a thread and decodes the supplied lzw encoded string
+  * @method decode
+  * @param {string} inputString
+  * @param {function} onSuccess
   */
-  processStartOptions(startOptions) {
-    // Add options to override library environment behavior
-    let habitatKeys = [
-      'worker', 'sharedworker',
-      'legacy', 'webworker',
-      'reactnative', 'atomics',
-      'proxies', 'transferrable',
-      'browser', 'shell', 
-      'node', 'debug',
-      'persistence', 'importscripts'
-    ];
-    let key = null;
-    for (key of Object.keys(startOptions)) {
-      if (habitatKeys.indexOf(key.toLowerCase()) !== -1) {
-        this.habitat[key] = startOptions[key];
+  lzwDecode(inputString, onSuccess) {
+    run(inputString, decodeString, onSuccess, true);
+  }
+
+  /**
+  * @description: Abstracts hamsters usage for reusability
+  * @method run
+  * @param {string} inputString
+  * @param {function} encodeOrDecode
+  * @param {function} onSuccess
+  */
+  run(inputString, fn, onSuccess, decode) {
+    var _inputString = decode
+      ? inputString
+      : unescape(encodeURIComponent(inputString));
+
+    splitString(_inputString, function(stringArray) {
+      var params = {
+        array: stringArray
+      };
+      hamsters.run(params, fn, function(output) {
+        var _output = decode
+          ? decodeURIComponent(escape(output))
+          : output;
+
+        onSuccess(_output);
+      }, 1, true);
+    });
+  }
+
+  /**
+  * @description: Splits a string into an array
+  * @method splitString
+  * @param {string} inputString
+  */
+  splitString(inputString, onSuccess) {
+    var inputArray = (inputString + "").split("");
+    var outputArray = [];
+    var operator = function(i) {
+      return arguments[0].charCodeAt(0);
+    };
+    var options = {
+      operator: operator,
+      array: inputArray
+    };
+    hamsters.tools.loop(options, function(output) {
+      onSuccess(output);
+    });
+  }
+
+  /**
+  * @description: Function to be executed within a thread to encode a string
+  * @method encodeString
+  * @param {params} Object
+  */
+  encodeString() {
+    var returnCharacterCode = function(phrase) {
+      if(phrase.length > 1) {
+        return dictionary[phrase];
+      }
+      return phrase.charCodeAt(0);
+    };
+    var stringArray = [];
+    var n = 0;
+    for (n; n < params.array.length; n++) {
+      stringArray[n] = String.fromCharCode(params.array[n]);
+    }
+    var currentCharacter;
+    var output = [];
+    var dictionary = {};
+    var code = 256;
+    var phrase = stringArray[0];
+    var phrasePlusChar;
+    var i = 1;
+    for (i; i < stringArray.length; i++) {
+      currentCharacter = stringArray[i];
+      phrasePlusChar = dictionary[phrase + currentCharacter];
+      if (phrasePlusChar) {
+        phrase += currentCharacter;
       } else {
-        this[key] = startOptions[key];
+        output.push(returnCharacterCode(phrase));
+        dictionary[phrase + currentCharacter] = code;
+        code++;
+        phrase = currentCharacter;
       }
     }
-    // Ensure legacy mode is disabled when we pass a third party worker library
-    if(typeof this.habitat.Worker === 'function' && startOptions['legacy'] !== true) {
-      this.habitat.legacy = false;
+    output.push(returnCharacterCode(phrase));
+    for (i = 0; i < output.length; i++) {
+      rtn.data[i] = String.fromCharCode(output[i]);
     }
+    rtn.data = rtn.data.join("");
   }
 
   /**
-  * @constructor
-  * @function hamstersTask - Constructs a new task object from provided arguments
-  * @param {object} params - Provided library execution options
-  * @param {function} functionToRun - Function to execute
-  * @param {object} scope - Reference to main library context
-  * @return {object} new Hamsters.js task
+  * @description: Function to be executed within a thread to decode an already encoded string
+  * @method decodeString
+  * @param {params} Object
   */
-  hamstersTask(params, functionToRun, scope) {
-    this.id = scope.pool.tasks.length;
-    this.count = 0;
-    this.aggregate = (params.aggregate || false);
-    this.output = [];
-    this.workers = [];
-    this.memoize = (params.memoize || false);
-    this.dataType = (params.dataType ? params.dataType.toLowerCase() : null);
-    this.input = params;
-    // Do not modify function if we're running on the main thread for legacy fallback
-    if(scope.habitat.legacy) {
-      this.threads = 1;
-      this.input.hamstersJob = functionToRun;
-    } else {
-      this.threads = (params.threads || 1);
-      this.input.hamstersJob = scope.data.prepareJob(functionToRun);
+  decodeString() {
+    var returnPhrase = function(currentCode, oldPhrase, currentCharacter) {
+      if(typeof dictionary[currentCode] !== 'undefined') {
+        return dictionary[currentCode];
+      }
+      return (oldPhrase + currentCharacter);
+    };
+    var stringArray = [];
+    var n = 0;
+    for (n; n < params.array.length; n++) {
+      stringArray[n] = String.fromCharCode(params.array[n]);
     }
+    var currentCharacter = stringArray[0];
+    var oldPhrase = currentCharacter;
+    var code = 256;
+    var currentCode;
+    var currentPhrase;
+    var dictionary = {};
+    rtn.data.push(currentCharacter);
+    for (var i = 1; i < stringArray.length; i++) {
+      currentCode = params.array[i];
+      if (currentCode < 256) {
+        currentPhrase = stringArray[i];
+      } else {
+        currentPhrase = returnPhrase(currentCode, oldPhrase, currentCharacter);
+      }
+      rtn.data.push(currentPhrase);
+      currentCharacter = currentPhrase.charAt(0);
+      dictionary[code] = (oldPhrase + currentCharacter);
+      oldPhrase = currentPhrase;
+      code++;
+    }
+    rtn.data = rtn.data.join("");
   }
 
-  scheduleTask(task, resolve, reject) {
-    this.pool.scheduleTask(task, this).then((results) => {
-      return resolve(results);
-    }).catch((error) => {
-      return hamstersLogger.error(error.messsage, reject);
-    });
-  }
-
-  /**
-  * @async
-  * @function hamstersPromise - Calls library functionality using async promises
-  * @param {object} params - Provided library execution options
-  * @param {function} functionToRun - Function to execute
-  * @return {array} Results from functionToRun.
-  */
-  hamstersPromise(params, functionToRun) {
-    return new Promise((resolve, reject) => {
-      let task = new this.hamstersTask(params, functionToRun, this);
-      this.scheduleTask(task, resolve, reject);
-    });
-  }
-
-  /**
-  * @async
-  * @function hamstersRun - Calls library functionality using async callbacks
-  * @param {object} params - Provided library execution options
-  * @param {function} functionToRun - Function to execute
-  * @param {function} onSuccess - Function to call upon successful execution
-  * @param {function} onError - Function to call upon execution failure
-  * @return {array} Results from functionToRun.
-  */
-  hamstersRun(params, functionToRun, onSuccess, onError) {
-    let task = new this.hamstersTask(params, functionToRun, this);
-    this.scheduleTask(task, onSuccess, onError);
-  }
 }
 
-var hamsters = new hamstersjs();
+var lzwFlossRedux = new lzwFlossReduxjs();
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-  module.exports = hamsters;
+  module.exports = lzwFlossRedux;
 }
