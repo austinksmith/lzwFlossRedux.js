@@ -4,10 +4,9 @@
   "description": "100% Vanilla Javascript Multithreaded LZW Compression Library",
   "homepage": "https://github.com/austinksmith/lzwFlossRedux.js",
   "version": "1.0.0",
-  "main": "build/lzwFlossRedux.js",
+  "main": "build/lzwFlossRedux.node.min.js",
   "scripts": {
     "build": "rm -rf ./build && webpack --config ./lzwFlossRedux.webpack.config.js",
-    "copy-common": "mkdir ./build/common && cp -a ./src/core/common/. ./build/common/",
     "test": "karma start --reporters html"
   },
   "license": "Artistic-2.0",
