@@ -66,7 +66,7 @@ You can find a view examples of the library in action using the links below.
   ```js
 	lzwFlossRedux.encode("This is my string, there are many like it but this one is mine.").then(function(encodedString) {
 		// encodedString will now look like "This Ă my string, there aĕĆanĈlikĖit buģĒąonġămče."
-	  // Do something with your encoded string
+		// Do something with your encoded string
 	});
   ```
   ### Decode an already encoded string
