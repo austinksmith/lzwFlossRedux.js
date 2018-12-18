@@ -54,7 +54,7 @@ You can find a view examples of the library in action using the links below.
   * Require the npm module in your app.js file
 
   ```js
-  var lzwFlossRedux = require('lzwFlossRedux.js');
+    var lzwFlossRedux = require('lzwFlossRedux.js');
   ```
 
 
