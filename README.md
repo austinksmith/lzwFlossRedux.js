@@ -33,7 +33,9 @@ You can find a view examples of the library in action using the links below.
 
 # How to use lzwFlossRedux.js
 
-  * Add lzwFlossRedux to your project
+  * Add [Hamsters.js](https://www.hamsters.io) to your project and ensure it's initialized, lzwFlossRedux relies on Hamsters.js
+
+  * Add lzwFlossRedux to your project using the instructions below
 
   ### HTML
 
@@ -57,8 +59,24 @@ You can find a view examples of the library in action using the links below.
     var lzwFlossRedux = require('lzwFlossRedux.js');
   ```
 
+  * Once you've installed Hamsters.js & LzwFlossRedux.js you should now be able to run the following methods.
 
+  ### Encode a string
 
+  ```js
+  	lzwFlossRedux.encode("This is my string, there are many like it but this one is mine.").then(function(encodedString) {
+  	    // encodedString will now look like "This Ă my string, there aĕĆanĈlikĖit buģĒąonġămče."
+       // Do something with your encoded string
+  	});
+  ```
+  ### Decode an already encoded string
+
+  ```js
+  	 lzwFlossRedux.decode("This Ă my string, there aĕĆanĈlikĖit buģĒąonġămče.").then(function(decodedString) {
+  	 	// decodedString will now look like "This is my string, there are many like it but this one is mine."
+       // Do something with your decoded string
+  	});
+  ```
 
 # Support lzwFlossRedux.js
 
