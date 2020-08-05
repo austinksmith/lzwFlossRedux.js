@@ -18,7 +18,7 @@ class lzwFlossReduxjs {
   * @function constructor - Sets properties for this class
   */
   constructor() {
-    this.version = '1.0.0';
+    this.version = '1.0.1';
     this.encode = this.lzwEncode;
     this.decode = this.lzwDecode;
   }
@@ -174,6 +174,10 @@ class lzwFlossReduxjs {
 }
 
 var lzwFlossRedux = new lzwFlossReduxjs();
+
+if(typeof require !== 'undefined') {
+  var hamsters = require('hamsters.js');
+}
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = lzwFlossRedux;

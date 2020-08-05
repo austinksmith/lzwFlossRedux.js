@@ -10,7 +10,7 @@
 ***********************************************************************************/
 
 import lzwFlossRedux from '../src/lzwFlossRedux';
-import hamsters from '../node_modules/hamsters.js';
+import hamsters from 'hamsters.js';
 
 // Initialize Hamsters.js first
 hamsters.init();
@@ -26,7 +26,7 @@ describe("lzwFlossRedux", () => {
   it("Version should be defined", () => {
   	expect(typeof lzwFlossRedux.version).not.toBe('undefined');
     expect(typeof lzwFlossRedux.version).toBe("string");
-    expect(lzwFlossRedux.version).toEqual('1.0.0');
+    expect(lzwFlossRedux.version).toEqual('1.0.1');
   });
 
   it("Encode should be a function", () => {
