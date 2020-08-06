@@ -20,7 +20,7 @@ lzwFlossRedux is a multithreaded javascript implementation using the Hamsters.js
   * Uncompress data recieved on the fly using WebWorker threads
   * Reduce bandwidth use and costs without interupting user experience
   * Compress data before saving to local storage & session storage increasing how much you can store
-  * Non-blocking, all compression / decompression is done using a WebWorker thread
+  * Non-blocking, all compression / decompression is done using a Hamsters.js thread
   * Written specifically for use with Hamsters.js allowing you to compress and decompress many items concurrently
   * Async compression & decompression using promises
   * Node.js & Web support allowing you to compress / decompress E2E (end to end)
@@ -52,11 +52,11 @@ You can find a view examples of the library in action using the links below.
 
   ### Node
 
-  * Use npm install to add the project to your dependencies `npm install --save lzwFlossRedux`
+  * Use npm install to add the project to your dependencies `npm install --save lzwflossredux.js`
   * Require the npm module in your app.js file
 
   ```js
- 	var lzwFlossRedux = require('lzwFlossRedux.js');
+ 	  const lzwFlossRedux = require('lzwFlossRedux.js');
   ```
 
   * Once you've installed Hamsters.js & LzwFlossRedux.js you should now be able to run the following methods.
@@ -64,18 +64,18 @@ You can find a view examples of the library in action using the links below.
   ### Encode a string
 
   ```js
-	lzwFlossRedux.encode("This is my string, there are many like it but this one is mine.").then(function(encodedString) {
-		// encodedString will now look like "This Ă my string, there aĕĆanĈlikĖit buģĒąonġămče."
-		// Do something with your encoded string
-	});
+  	lzwFlossRedux.encode("This is my string, there are many like it but this one is mine.").then(function(encodedString) {
+  		// encodedString will now look like "This Ă my string, there aĕĆanĈlikĖit buģĒąonġămče."
+  		// Do something with your encoded string
+  	});
   ```
   ### Decode an already encoded string
 
   ```js
-	lzwFlossRedux.decode("This Ă my string, there aĕĆanĈlikĖit buģĒąonġămče.").then(function(decodedString) {
-		// decodedString will now look like "This is my string, there are many like it but this one is mine."
-		// Do something with your decoded string
-	});
+  	lzwFlossRedux.decode("This Ă my string, there aĕĆanĈlikĖit buģĒąonġămče.").then(function(decodedString) {
+  		// decodedString will now look like "This is my string, there are many like it but this one is mine."
+  		// Do something with your decoded string
+  	});
   ```
 
 # Support lzwFlossRedux.js
